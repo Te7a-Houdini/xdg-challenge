@@ -1,6 +1,10 @@
 <template>
     <div class="row">
-        <UsersCardsItem/>
+        <UsersCardsItem
+          v-for="user in users"
+          :key="user.id"
+          :user="user"
+        />
     </div>
 </template>
 
