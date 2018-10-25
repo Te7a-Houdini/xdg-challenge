@@ -53,9 +53,21 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary-default">
                                     {{ __('Login') }}
                                 </button>
+
+                                <a href="{{route('socialAuth','google')}}" class="btn btn-danger">
+                                    Google +
+                                </a>
+
+                                <a href="{{route('socialAuth','twitter')}}"  class="btn btn-primary">
+                                    Twitter
+                                </a>
+
+                                <a href="{{route('socialAuth','facebook')}}" style="background-color : #3B5998; color:white;"  class="btn">
+                                    Facebook
+                                </a>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
