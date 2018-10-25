@@ -4,7 +4,7 @@
             <span class="pull-left">Users</span>
         </div>
         <div class="card-body">
-            <UsersCards/>
+            <UsersCards :users="[]"/>
         </div>
     </div>
 </template>

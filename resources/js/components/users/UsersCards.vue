@@ -1,43 +1,25 @@
 <template>
     <div class="row">
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-header">First user</div>
-                <div class="card-body">
-                    <h1>this is body</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-header">First user</div>
-                <div class="card-body">
-                    <h1>this is body</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-header">First user</div>
-                <div class="card-body">
-                    <h1>this is body</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-header">First user</div>
-                <div class="card-body">
-                    <h1>this is body</h1>
-                </div>
-            </div>
-        </div>
+        <UsersCardsItem/>
     </div>
 </template>
 
 <script>
+import UsersCardsItem from "./UsersCardsItem";
+
 export default {
-  name: "UsersCards"
+  name: "UsersCards",
+
+  components: {
+      UsersCardsItem,
+  },
+
+  props: {
+    users: {
+      type: Array,
+      required : true,
+    }
+  }
 };
 </script>
 
