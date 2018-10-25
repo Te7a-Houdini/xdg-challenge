@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return UserResource::collection(User::whereNameLike(request()->name)->get());
+        return UserResource::collection(User::whereNameLike(request()->name)->orderByDesc('created_at')->get());
     }
 
     public function store(Request $request)
