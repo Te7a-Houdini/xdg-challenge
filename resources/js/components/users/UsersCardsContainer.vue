@@ -7,6 +7,8 @@
         </div>
         <div class="col-md-4">
           <input
+            v-model="nameSearch"
+            @input="fetchUsers"
             type="text"
             class="form-control form-control-sm"
             placeholder="Search For User By Name"
@@ -31,7 +33,8 @@ export default {
 
   data() {
     return {
-      users: []
+      users: [],
+      nameSearch:'',
     };
   },
 
@@ -41,7 +44,7 @@ export default {
 
   methods: {
     async fetchUsers() {
-      let { data } = await axios.get("users");
+      let { data } = await axios.get("users",{params : {name : this.nameSearch}});
 
       this.users = data.data;
     }
