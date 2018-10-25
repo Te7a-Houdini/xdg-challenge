@@ -23,7 +23,4 @@ Route::get('social-auth/{provider}','SocialAuthController@redirectToProvider')->
 
 Route::get('social-auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
-Route::get('users','UserController@index');
-Route::post('users','UserController@store');
-Route::put('users/{user}','UserController@update');
-Route::delete('users/{user}','UserController@destroy');
+Route::apiResource('users', 'UserController')->except('show')->middleware('auth');
