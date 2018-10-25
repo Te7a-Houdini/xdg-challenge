@@ -121,6 +121,14 @@ export default {
 
     submitButtonTitle() {
       return this.inCreateMode ? "Create" : "Save";
+    },
+
+    submitUrl() {
+      return this.inCreateMode ? "users" : `users/${this.form.id}`;
+    },
+
+    submitMethod() {
+      return this.inCreateMode ? "post" : "put";
     }
   },
 
@@ -158,11 +166,8 @@ export default {
     },
 
     async submit() {
-      const url = this.inCreateMode ? "users" : `users/${this.form.id}`;
-      const method = this.inCreateMode ? "post" : "put";
-
       try {
-        let { data } = await axios[method](url, {
+        let { data } = await axios[this.submitMethod](this.submitUrl, {
           name: this.form.name,
           email: this.form.email,
           password: this.form.password,
