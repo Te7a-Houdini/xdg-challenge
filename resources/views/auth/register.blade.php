@@ -62,10 +62,22 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-default">
                                     {{ __('Register') }}
                                 </button>
+
+                                <a href="{{route('socialAuth','google')}}" class="btn btn-danger">
+                                    Google +
+                                </a>
+
+                                <a href="{{route('socialAuth','twitter')}}"  class="btn btn-primary">
+                                    Twitter
+                                </a>
+
+                                <a href="{{route('socialAuth','facebook')}}" style="background-color : #3B5998; color:white;"  class="btn">
+                                    Facebook
+                                </a>
                             </div>
                         </div>
                     </form>
