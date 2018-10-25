@@ -40,32 +40,34 @@
                                 v-model="form.email"
                             >
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input
-                                type="password"
-                                class="form-control is-invalid"
-                                id="exampleInputPassword1"
-                                placeholder="Password"
-                                v-model="form.password"
-                            >
-                            <span class="invalid-feedback" role="alert">
-                                <strong>errors are here</strong>
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword2">Password Confirmation</label>
-                            <input
-                                type="password"
-                                class="form-control is-invalid"
-                                id="exampleInputPassword2"
-                                placeholder="Password"
-                                v-model="form.password_confirmation"
-                            >
-                            <span class="invalid-feedback" role="alert">
-                                <strong>errors are here</strong>
-                            </span>
-                        </div>
+                        <template v-if="inCreateMode">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input
+                                    type="password"
+                                    class="form-control is-invalid"
+                                    id="exampleInputPassword1"
+                                    placeholder="Password"
+                                    v-model="form.password"
+                                >
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>errors are here</strong>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword2">Password Confirmation</label>
+                                <input
+                                    type="password"
+                                    class="form-control is-invalid"
+                                    id="exampleInputPassword2"
+                                    placeholder="Password"
+                                    v-model="form.password_confirmation"
+                                >
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>errors are here</strong>
+                                </span>
+                            </div>
+                        </template>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -86,6 +88,7 @@ export default {
       inCreateMode: true,
 
       form: {
+        id: null,
         name: "",
         email: "",
         password: "",
@@ -100,14 +103,38 @@ export default {
     },
 
     submitButtonTitle() {
-      return this.inCreateMode ? "Create" : "Edit";
+      return this.inCreateMode ? "Create" : "Save";
     }
   },
 
   created() {
-    this.$eventBus.$on("UsersCardsItem__editUserClicked", ({ user }) => {
-      console.log(user);
+    this.$eventBus.$on("UsersCardsContainer__createUserClicked", () => {
+      this.inCreateMode = true;
+      this.resetForm();
+
+      $(this.$el).modal("show");
     });
+
+    this.$eventBus.$on("UsersCardsItem__editUserClicked", ({ user }) => {
+      this.inCreateMode = false;
+      this.form.name = user.name;
+      this.form.email = user.email;
+      this.form.id = user.id;
+
+      $(this.$el).modal("show");
+    });
+  },
+
+  methods: {
+    resetForm() {
+      this.form = {
+        id: null,
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+      };
+    }
   }
 };
 </script>
