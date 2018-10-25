@@ -12,4 +12,9 @@ class UserController extends Controller
     {
         return UserResource::collection(User::whereNameLike(request()->name)->get());
     }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }

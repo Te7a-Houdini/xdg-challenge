@@ -24,3 +24,4 @@ Route::get('social-auth/{provider}','SocialAuthController@redirectToProvider')->
 Route::get('social-auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
 Route::get('users','UserController@index');
+Route::post('users','UserController@store');
