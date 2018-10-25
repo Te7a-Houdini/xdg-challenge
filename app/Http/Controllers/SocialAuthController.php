@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Socialite;
 use Illuminate\Validation\ValidationException;
+use Auth;
+use App\User;
 
 class SocialAuthController extends Controller
 {
@@ -21,7 +23,18 @@ class SocialAuthController extends Controller
         $this->validateProvider($provider);
 
         $user = Socialite::driver($provider)->user();
-        dd($user);
+
+        Auth::login(
+            User::firstOrCreate([
+                'email' => $user->email
+            ], [
+                'email' => $user->email,
+                'name' => $user->name,
+                'password' => bcrypt(str_random())
+            ])
+        );
+
+        return redirect()->route('home');
     }
 
     private function validateProvider($provider)
