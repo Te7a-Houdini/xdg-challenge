@@ -15,6 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.prototype.$eventBus = new Vue(); // Global event bus
+
 Vue.component('users-cards-container', require('./components/users/UsersCardsContainer.vue'));
 
 const app = new Vue({
