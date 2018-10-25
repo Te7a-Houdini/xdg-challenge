@@ -2,18 +2,18 @@
     <div class="col-md-4 mb-3">
         <div class="card">
             <div class="card-header">
-                <h4>First User</h4>
+                <h5> {{user.name}}</h5>
             </div>
             <div class="card-body">
                 <ul>
                     <li>
-                        <h5>Email : test@example.com</h5>
+                        <h6>Email : {{user.email}}</h6>
                     </li>
                     <li>
-                        <h5>Name : Ahmed</h5>
+                        <h6>Name : {{user.name}}</h6>
                     </li>
                     <li>
-                        <h5>Created : 2018-09-10 05:20</h5>
+                        <h6>Created : {{user.created_at}}</h6>
                     </li>
                 </ul>
                 <a href="#" class="card-link">
