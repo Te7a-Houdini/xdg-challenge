@@ -29,7 +29,14 @@
 
 <script>
 export default {
-  name: "UsersCardsItem"
+  name: "UsersCardsItem",
+
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 
