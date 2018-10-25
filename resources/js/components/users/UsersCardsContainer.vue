@@ -15,18 +15,24 @@
           >
         </div>
         <div class="col-md-4">
-          <button class="btn btn-sm btn-default float-right">Create</button>
+          <button
+            data-toggle="modal"
+            data-target="#userFormModal"
+            class="btn btn-sm btn-default float-right"
+          >Create</button>
         </div>
       </div>
     </div>
     <div class="card-body">
       <UsersCards :users="users"/>
     </div>
+    <UserFormModal :in-create-mode="true"/>
   </div>
 </template>
 
 <script>
 import UsersCards from "./UsersCards";
+import UserFormModal from "./UserFormModal";
 
 export default {
   name: "UsersCardsContainer",
@@ -34,7 +40,7 @@ export default {
   data() {
     return {
       users: [],
-      nameSearch:'',
+      nameSearch: ""
     };
   },
 
@@ -44,14 +50,17 @@ export default {
 
   methods: {
     async fetchUsers() {
-      let { data } = await axios.get("users",{params : {name : this.nameSearch}});
+      let { data } = await axios.get("users", {
+        params: { name: this.nameSearch }
+      });
 
       this.users = data.data;
     }
   },
 
   components: {
-    UsersCards
+    UsersCards,
+    UserFormModal
   }
 };
 </script>
