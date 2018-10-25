@@ -5,18 +5,25 @@
             <button class="btn btn-sm btn-default float-right">Create</button>
         </div>
         <div class="card-body">
-            <UsersCards :users="[]"/>
+            <UsersCards :users="users"/>
         </div>
     </div>
 </template>
 
 <script>
-import UsersCards from './UsersCards'
+import UsersCards from "./UsersCards";
 
 export default {
   name: "UsersCardsContainer",
-  components : {
-      UsersCards,
+
+  data() {
+    return {
+      users: []
+    };
+  },
+
+  components: {
+    UsersCards
   }
 };
 </script>
