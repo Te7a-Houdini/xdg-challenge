@@ -102,6 +102,7 @@ export default {
   data() {
     return {
       inCreateMode: true,
+
       errors: {},
 
       form: {
@@ -167,12 +168,16 @@ export default {
 
     async submit() {
       try {
-        let { data } = await axios[this.submitMethod](this.submitUrl, {
+        let response = await axios[this.submitMethod](this.submitUrl, {
           name: this.form.name,
           email: this.form.email,
           password: this.form.password,
           password_confirmation: this.form.password_confirmation
         });
+
+        $(this.$el).modal("hide");
+
+        this.$eventBus.$emit("UserFormModal__formSubmitted");
       } catch (error) {
         if (error.response.status === 422) {
           this.showFormValidationErrors(error.response.data.errors);
