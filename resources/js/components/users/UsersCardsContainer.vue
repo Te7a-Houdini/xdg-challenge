@@ -16,8 +16,7 @@
         </div>
         <div class="col-md-4">
           <button
-            data-toggle="modal"
-            data-target="#userFormModal"
+            @click.prevent="$eventBus.$emit('UsersCardsContainer__createUserClicked')"
             class="btn btn-sm btn-default float-right"
           >Create</button>
         </div>
