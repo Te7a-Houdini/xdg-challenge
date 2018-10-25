@@ -25,3 +25,4 @@ Route::get('social-auth/{provider}/callback', 'SocialAuthController@handleProvid
 
 Route::get('users','UserController@index');
 Route::post('users','UserController@store');
+Route::put('users/{user}','UserController@update');
