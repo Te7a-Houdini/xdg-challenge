@@ -32,4 +32,11 @@ class UserController extends Controller
             tap($user)->update($request->only(['name', 'email']))
         );
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return response()->json();
+    }
 }
