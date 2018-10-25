@@ -50,6 +50,11 @@ export default {
       this.nameSearch = "";
       this.fetchUsers();
     });
+
+    this.$eventBus.$on("UsersCardsItem__deleteUserConfirmed", ({ user }) => {
+      this.deleteUser(user.id);
+      this.fetchUsers();
+    });
   },
 
   methods: {
@@ -59,6 +64,10 @@ export default {
       });
 
       this.users = data.data;
+    },
+
+    async deleteUser(id) {
+      await axios.delete(`users/${id}`);
     }
   },
 
