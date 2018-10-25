@@ -81,15 +81,10 @@
 export default {
   name: "UserFormModal",
 
-  props: {
-    inCreateMode: {
-      type: Boolean,
-      default: true
-    }
-  },
-
   data() {
     return {
+      inCreateMode: true,
+
       form: {
         name: "",
         email: "",
@@ -98,6 +93,7 @@ export default {
       }
     };
   },
+
   computed: {
     title() {
       return this.inCreateMode ? "Create User" : "Edit User";
@@ -106,6 +102,12 @@ export default {
     submitButtonTitle() {
       return this.inCreateMode ? "Create" : "Edit";
     }
+  },
+
+  created() {
+    this.$eventBus.$on("editUserClicked", ({ user }) => {
+      console.log(user);
+    });
   }
 };
 </script>

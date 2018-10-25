@@ -26,7 +26,7 @@
     <div class="card-body">
       <UsersCards :users="users"/>
     </div>
-    <UserFormModal :in-create-mode="true"/>
+    <UserFormModal/>
   </div>
 </template>
 
