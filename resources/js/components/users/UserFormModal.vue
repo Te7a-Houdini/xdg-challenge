@@ -158,8 +158,11 @@ export default {
     },
 
     async submit() {
+      const url = this.inCreateMode ? "users" : `users/${this.form.id}`;
+      const method = this.inCreateMode ? "post" : "put";
+
       try {
-        let { data } = await axios.post("users", {
+        let { data } = await axios[method](url, {
           name: this.form.name,
           email: this.form.email,
           password: this.form.password,
