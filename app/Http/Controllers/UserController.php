@@ -35,6 +35,10 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($user->id == auth()->user()->id) {
+            return response()->json(['errors' => ['message' => "you can't delete your account"]], 422);
+        }
+
         $user->delete();
 
         return response()->json();
