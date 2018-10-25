@@ -16,7 +16,7 @@
                         <h6>Created : {{user.created_at}}</h6>
                     </li>
                 </ul>
-                <a href="#" class="card-link" @click.prevent="$eventBus.$emit('editUserClicked',{user})">
+                <a href="#" class="card-link" @click.prevent="$eventBus.$emit('UsersCardsItem__editUserClicked',{user})">
                     <i class="fa fa-lg fa-edit text-default"></i>
                 </a>
                 <a href="#" class="card-link float-right">

@@ -105,7 +105,7 @@ export default {
   },
 
   created() {
-    this.$eventBus.$on("editUserClicked", ({ user }) => {
+    this.$eventBus.$on("UsersCardsItem__editUserClicked", ({ user }) => {
       console.log(user);
     });
   }
