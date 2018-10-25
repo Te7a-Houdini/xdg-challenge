@@ -52,8 +52,7 @@ export default {
     });
 
     this.$eventBus.$on("UsersCardsItem__deleteUserConfirmed", ({ user }) => {
-      this.deleteUser(user.id);
-      this.fetchUsers();
+      this.deleteUser(user.id).then(() => this.fetchUsers());
     });
   },
 
@@ -66,8 +65,8 @@ export default {
       this.users = data.data;
     },
 
-    async deleteUser(id) {
-      await axios.delete(`users/${id}`);
+     deleteUser(id) {
+      return axios.delete(`users/${id}`);
     }
   },
 
