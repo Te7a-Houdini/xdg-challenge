@@ -45,6 +45,11 @@ export default {
 
   created() {
     this.fetchUsers();
+
+    this.$eventBus.$on("UserFormModal__formSubmitted", () => {
+      this.nameSearch = "";
+      this.fetchUsers();
+    });
   },
 
   methods: {
